@@ -1,0 +1,12 @@
+version: "2"
+services:
+  ekoli-calendar-base:
+    build:
+      args:
+        uid: ${UID}
+        gid: ${GID}
+      context: ../..
+      dockerfile: build/base/Dockerfile
+    image: ekoli-calendar:base
+    working_dir: /code
+    command: "/bin/true"

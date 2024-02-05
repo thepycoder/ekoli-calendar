@@ -1,0 +1,17 @@
+version: "2"
+services:
+  ekoli-calendar:
+    build:
+      args:
+        uid: ${UID}
+        gid: ${GID}
+      context: ../..
+      dockerfile: build/dev/Dockerfile
+    image: ekoli-calendar:dev
+    volumes:
+      - ../..:/code
+      - ../..:/opt/ekoli-calendar
+      - ~/.bash_history.ekoli-calendar:/home/ekoli-calendar/.bash_history
+    command: "bash -c 'exec python3 -m ekoli_calendar.app'"
+    ports:
+        - "127.0.0.1:5000:5000"
